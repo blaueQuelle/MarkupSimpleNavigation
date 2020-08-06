@@ -55,7 +55,7 @@ class MarkupSimpleNavigation extends WireData implements Module {
 			'summary' => 'Module to render simple nested ul tree of the site structure. See readme for usage and options avaiable.',
 			'version' => 137,
 			'href' => 'http://processwire.com/talk/topic/1036-markupsimplenavigation/',
-			'requires' => ['ProcessWire>=3'],
+			'requires' => ['ProcessWire>=3.0.0'],
 			'autoload' => false,
 			'singular' => false,
             'icon' => 'bars'
