@@ -46,10 +46,10 @@ The render() method accepts some configuration options.
         'inner_tpl' => '<ul>||</ul>',
         'list_tpl' => '<li%s>||</li>',
         'list_field_class' => '',
-        'item_tpl' => '<a href="{url}">{title}</a>',
-        'item_current_tpl' => '<a href="{url}">{title}</a>',
+        'item_tpl' => '<a href="{url}" title="{title}">{title}</a>',
+        'item_current_tpl' => '<a href="{url}" title="{title}">{title}</a>',
         'xtemplates' => '',
-        'xitem_tpl' => '<a href="{url}">{title}</a>',
+        'xitem_tpl' => '<a href="{url}" title="{title}">{title}</a>',
         'xitem_current_tpl' => '<span>{title}</span>',
         'date_format' => 'Y/m/d',
         'code_formatting' => false,
@@ -105,16 +105,16 @@ The render() method accepts some configuration options.
 
         'list_field_class' => '', // string (default '') add custom classes to each list_tpl using tags like {field} i.e. {template} p_{id}
 
-        'item_tpl' => '<a href="{url}">{title}</a>',
+        'item_tpl' => '<a href="{url}" title="{title}">{title}</a>',
         // template string for the inner items. Use {anyfield} and {url}, i.e. {headline|title}, if field is of type image it will return url to image (first image if multiple)
 
-        'item_current_tpl' => '<a href="{url}">{title}</a>',
+        'item_current_tpl' => '<a href="{url}" title="{title}">{title}</a>',
         // template string for the active inner items.
 
         'xtemplates' => '',
         // specify one or more templates separated with a pipe | to use the xitem_tpl and xitem_current_tpl markup
 
-        'xitem_tpl' => '<a href="{url}">{title}</a>',
+        'xitem_tpl' => '<a href="{url}" title="{title}">{title}</a>',
         // same as 'item_tpl' but for xtemplates pages, can be used to define placeholders
 
         'xitem_current_tpl' => '<span>{title}</span>',
@@ -178,6 +178,10 @@ Since 1.3.3 you can also define a PageArray as the root page argument. Instead o
     </ul>
 
 ## Changelog
+
+### Changes in 1.3.7
+- added Namespace ProcessWire; requires >PW3
+- added link title as default value
 
 ### Changes in 1.3.6
 

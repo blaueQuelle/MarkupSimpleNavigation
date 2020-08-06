@@ -1,4 +1,4 @@
-<?php
+<?php namespace ProcessWire;
 
 /**
  *
@@ -9,7 +9,7 @@
  *
  * @date_created 08/03/2012
  *
- * ProcessWire 2.x
+ * ProcessWire 3.x
  * Copyright (C) 2011 by Ryan Cramer
  * Licensed under GNU/GPL v2, see LICENSE.TXT
  *
@@ -38,10 +38,10 @@ class MarkupSimpleNavigation extends WireData implements Module {
 		'inner_tpl' => '<ul>||</ul>', // template string for inner wrappers. || will contain entries
 		'list_tpl' => '<li%s>||</li>', // template string for the items. || will contain entries, %s will replaced with class="..." string
 		'list_field_class' => '', // string (default '') add custom classes to each list_tpl using tags like {field} i.e. {template} p_{id}
-		'item_tpl' => '<a href="{url}">{title}</a>', // template string for the inner items. Use {anyfield} and {url}, i.e. {headline|title}, if field is of type image it will return url to image (first image if multiple)
-		'item_current_tpl' => '<a href="{url}">{title}</a>', // template string for the current active inner items.
+		'item_tpl' => '<a href="{url}" title="{title}">{title}</a>', // template string for the inner items. Use {anyfield} and {url}, i.e. {headline|title}, if field is of type image it will return url to image (first image if multiple)
+		'item_current_tpl' => '<a href="{url}" title="{title}">{title}</a>', // template string for the current active inner items.
 		'xtemplates' => '', // specify one or more templates separated with a pipe | to use the xitem_tpl and xitem_current_tpl markup
-		'xitem_tpl' => '<a href="{url}">{title}</a>', // same as 'item_tpl' but for xtemplates pages, can be used to define placholders
+		'xitem_tpl' => '<a href="{url}" title="{title}">{title}</a>', // same as 'item_tpl' but for xtemplates pages, can be used to define placholders
 		'xitem_current_tpl' => '<span>{title}</span>', // same as 'item_current_tpl' but for xtemplates pages
 		'date_format' => 'Y/m/d', // default date formatting for Datetime fields and native created/modified
 		'code_formatting' => false, // enable or disable code indentations and newslines in markup output
@@ -53,10 +53,12 @@ class MarkupSimpleNavigation extends WireData implements Module {
 		return array(
 			'title' => "Markup Simple Navigation",
 			'summary' => 'Module to render simple nested ul tree of the site structure. See readme for usage and options avaiable.',
-			'version' => 136,
+			'version' => 137,
 			'href' => 'http://processwire.com/talk/topic/1036-markupsimplenavigation/',
+			'requires' => ['ProcessWire>=3'],
 			'autoload' => false,
-			'singular' => false
+			'singular' => false,
+            'icon' => 'bars'
 		);
 	}
 
@@ -154,7 +156,7 @@ class MarkupSimpleNavigation extends WireData implements Module {
 			}
 		}
 
-		// filter out entries may exluded on runtime using Page::listable
+		// filter out entries may excluded on runtime using Page::listable
 		// TODO: not sure how it behaves with page hidden status
 		foreach($children as $key => $child) {
 			if(!$child->listable()) $children->remove($child);
