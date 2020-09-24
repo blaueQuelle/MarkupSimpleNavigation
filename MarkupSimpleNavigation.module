@@ -23,28 +23,28 @@
 class MarkupSimpleNavigation extends WireData implements Module {
 
 	public static $defaultOptions = array(
-		'parent_class' => 'parent', // string (default 'parent') overwrite class name for current parent levels
-		'current_class' => 'current', // string (default 'current') overwrite current class
-		'has_children_class' => 'has_children', // string (default 'has_children') overwrite class name for entries with children
+		'parent_class' => 'is-parent', // string (default 'parent') overwrite class name for current parent levels
+		'current_class' => 'is-current', // string (default 'current') overwrite current class
+		'has_children_class' => 'has-children', // string (default 'has_children') overwrite class name for entries with children
 		'levels' => false, // bool (default false) wether to output "level-1, level-2, ..." as css class in links
 		'levels_prefix' => 'level-', // bool (default 'level-') prefix string that will be used for level class
 		'max_levels' => null, // int (default null) set the max level rendered
 		'firstlast' => false, // bool (default false) puts last,first class to link items
 		'collapsed' => false, // bool (default false) if you want to auto-collapse the tree you set this to true
-		'show_root' => false, // bool (default false) set this to true if you want to rootPage to get prepended to the menu
+		'show_root' => true, // bool (default false) set this to true if you want to rootPage to get prepended to the menu
 		'selector' => '', // string (default '') define custom PW selector, you may sanitize values from user input
 		'selector_field' => 'nav_selector', // string (default 'nav_selector') define custom PW selector by using a property or field on a page. Use this setting if you want to overwrite the default nav_selector
-		'outer_tpl' => '<ul>||</ul>', // template string for the outer most wrapper. || will contain entries
-		'inner_tpl' => '<ul>||</ul>', // template string for inner wrappers. || will contain entries
+		'outer_tpl' => '<ul class="main-nav">||</ul>', // template string for the outer most wrapper. || will contain entries
+		'inner_tpl' => '<ul class="sub-nav">||</ul>', // template string for inner wrappers. || will contain entries
 		'list_tpl' => '<li%s>||</li>', // template string for the items. || will contain entries, %s will replaced with class="..." string
-		'list_field_class' => '', // string (default '') add custom classes to each list_tpl using tags like {field} i.e. {template} p_{id}
+		'list_field_class' => 'p_{id}', // string (default '') add custom classes to each list_tpl using tags like {field} i.e. {template} p_{id}
 		'item_tpl' => '<a href="{url}" title="{title}">{title}</a>', // template string for the inner items. Use {anyfield} and {url}, i.e. {headline|title}, if field is of type image it will return url to image (first image if multiple)
 		'item_current_tpl' => '<a href="{url}" title="{title}">{title}</a>', // template string for the current active inner items.
 		'xtemplates' => '', // specify one or more templates separated with a pipe | to use the xitem_tpl and xitem_current_tpl markup
 		'xitem_tpl' => '<a href="{url}" title="{title}">{title}</a>', // same as 'item_tpl' but for xtemplates pages, can be used to define placholders
-		'xitem_current_tpl' => '<span>{title}</span>', // same as 'item_current_tpl' but for xtemplates pages
+		'xitem_current_tpl' => '<a href="{url}" title="{title}">{title}</a>', // same as 'item_current_tpl' but for xtemplates pages
 		'date_format' => 'Y/m/d', // default date formatting for Datetime fields and native created/modified
-		'code_formatting' => false, // enable or disable code indentations and newslines in markup output
+		'code_formatting' => true, // enable or disable code indentations and newslines in markup output
 		'debug' => false, // show some inline information about rendertime and selectors used as html comments
 	);
 
@@ -53,7 +53,7 @@ class MarkupSimpleNavigation extends WireData implements Module {
 		return array(
 			'title' => "Markup Simple Navigation",
 			'summary' => 'Module to render simple nested ul tree of the site structure. See readme for usage and options avaiable.',
-			'version' => 137,
+			'version' => 1337,
 			'href' => 'http://processwire.com/talk/topic/1036-markupsimplenavigation/',
 			'requires' => ['ProcessWire>=3.0.0'],
 			'autoload' => false,
